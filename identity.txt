@@ -1,0 +1,93 @@
+public static async Task SeedDataAsync(IApplicationBuilder app)
+{
+    using var scope = app.ApplicationServices.CreateScope();
+    var context = scope.ServiceProvider.GetRequiredService<AppIdentityDbContext>();
+
+    if (context.Database.GetPendingMigrations().Any())
+    {
+        await context.Database.MigrateAsync();
+    }
+
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+
+    string[] roles = { "Admin", "Receptionist" };
+
+    foreach (var role in roles)
+    {
+        if (!await roleManager.RoleExistsAsync(role))
+        {
+            await roleManager.CreateAsync(new IdentityRole(role));
+        }
+    }
+
+    var adminUser = await userManager.FindByNameAsync("Admin");
+    if (adminUser == null)
+    {
+        adminUser = new IdentityUser("Admin")
+        {
+            Email = "admin@zensar.com",
+            PhoneNumber = "9822139921"
+        };
+
+        await userManager.CreateAsync(adminUser, "Secret123$");
+        await userManager.AddToRoleAsync(adminUser, "Admin");
+    }
+
+    var receptionistUser = await userManager.FindByNameAsync("Receptionist");
+    if (receptionistUser == null)
+    {
+        receptionistUser = new IdentityUser("Receptionist")
+        {
+            Email = "reception@zensar.com",
+            PhoneNumber = "9000000000"
+        };
+
+        await userManager.CreateAsync(receptionistUser, "Secret123$");
+        await userManager.AddToRoleAsync(receptionistUser, "Receptionist");
+    }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+public class LoginModel : PageModel
+{
+    private readonly SignInManager<IdentityUser> signInManager;
+    private readonly UserManager<IdentityUser> userManager;
+
+    public LoginModel(SignInManager<IdentityUser> signInMgr, UserManager<IdentityUser> userMgr)
+    {
+        signInManager = signInMgr;
+        userManager = userMgr;
+    }
+
+    [BindProperty]
+    public LoginViewModel Input { get; set; }
+
+    public string ReturnUrl { get; set; }
+
+    public async Task<IActionResult> OnPostAsync(string? returnUrl = null)
+    {
+        if (ModelState.IsValid)
+        {
+            var result = await signInManager.PasswordSignInAsync(Input.Username, Input.Password, false, false);
+
+            if (result.Succeeded)
+            {
+                var user = await userManager.FindByNameAsync(Input.Username);
+                var roles = await userManager.GetRolesAsync(user);
+
+                if (roles.Contains("Admin"))
+                    return RedirectToPage("/Admin/Dashboard");
+                else if (roles.Contains("Receptionist"))
+                    return RedirectToPage("/Receptionist/Dashboard");
+                else
+                    return RedirectToPage("/Index");
+            }
+
+            ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+        }
+
+        return Page();
+    }
+}
+-------------------------------------------------------------------------------------------------------------
