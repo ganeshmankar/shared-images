@@ -1,0 +1,1000 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        font-family: 'Montserrat', sans-serif;
+        overflow-x: hidden;
+    }
+
+    .hero-section {
+        background: url('/images/bg.jpg') no-repeat center center;
+        background-size: cover;
+        height: 100vh;
+        width: 100%;
+        position: relative;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .top-nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 100;
+    }
+
+    .logo-group {
+        display: flex;
+        align-items: center;
+    }
+
+        .logo-group img {
+            height: 35px;
+            margin-right: 10px;
+        }
+
+    .top-buttons a {
+        color: white;
+        font-weight: 500;
+        margin-left: 20px;
+        text-decoration: none;
+        border: 2px solid white;
+        padding: 8px 16px;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+
+        .top-buttons a:hover {
+            background-color: white;
+            color: #000;
+        }
+
+    .bottom-right-img {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        max-width: 300px;
+        z-index: 1;
+    }
+
+    .services-section {
+        background-color: #fff;
+        padding: 80px 60px;
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap;
+    }
+
+    .service-card {
+        background-color: #fff;
+        border-radius: 16px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        padding: 50px 40px;
+        width: 100%;
+        max-width: 420px;
+        box-sizing: border-box;
+        text-align: left;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card img {
+            height: 48px;
+            margin-bottom: 20px;
+        }
+
+    .service-title {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #000;
+    }
+
+    .service-desc {
+        font-size: 18px;
+        line-height: 1.6;
+        color: #777;
+    }
+
+    .info-graphic {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 40px 0;
+        background-color: #fafafa;
+    }
+
+        .info-graphic img {
+            width: 80%;
+            max-width: 1200px;
+            height: auto;
+            display: block;
+        }
+
+    .doctor-section {
+        background-color: #fff;
+        padding: 80px 60px;
+        text-align: center;
+    }
+
+        .doctor-section h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 40px;
+        }
+
+    .doctor-image {
+        max-width: 600px;
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.1);
+        margin: 0 auto;
+        display: block;
+    }
+
+    .doctor-info {
+        margin-top: 30px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .doctor-name {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #37929b;
+        margin-bottom: 10px;
+    }
+
+    .doctor-title {
+        font-size: 1.2rem;
+        color: #6c757d;
+        margin-bottom: 20px;
+    }
+
+    .doctor-description {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #555;
+    }
+
+    @@media (max-width: 1024px) {
+        .services-section
+
+    {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .doctor-section {
+        padding: 60px 30px;
+    }
+
+        .doctor-section h2 {
+            font-size: 2rem;
+        }
+
+    .appointment-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+        margin: 40px 20px;
+    }
+
+    .doctor-section {
+        padding: 60px 30px;
+    }
+
+        .doctor-section h2 {
+            font-size: 2rem;
+        }
+
+    }
+
+    .highlight-message {
+        background-color: #fafafa;
+        text-align: center;
+        padding: 60px 30px;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+        .highlight-message p {
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #6c757d;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .highlight-message .highlight {
+            font-weight: 700;
+            color: #37929b;
+        }
+
+    .appointment-banner {
+        background: linear-gradient(135deg, #7dd3f0, #62b6c9);
+        padding: 60px 40px;
+        margin: 60px auto;
+        max-width: 1200px;
+        border-radius: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .appointment-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .appointment-banner::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+    .appointment-content {
+        z-index: 2;
+        position: relative;
+    }
+
+        .appointment-content h3 {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+    .appointment-btn {
+        background: white;
+        color: #62b6c9;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s ease;
+        z-index: 2;
+        position: relative;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+        .appointment-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            color: #57b0be;
+        }
+</style>
+
+<div class="hero-section">
+    <div class="top-nav">
+        <div class="logo-group">
+            <img src="/images/logo.png" alt="Logo" />
+            <span class="fw-bold fs-4"></span>
+        </div>
+        <div class="top-buttons">
+            <a href="#">Contact</a>
+            <a href="#">Patient Portal</a>
+        </div>
+    </div>
+
+    <h1 class="display-3 fw-bold">Felix Medical Group</h1>
+    <p class="lead mt-3 mb-4">Dedicated to patient care and wellness for the entire family.</p>
+    <a href="/" class="btn btn-light btn-lg">Schedule an Appointment</a>
+</div>
+
+<!-- Services Section -->
+<div class="services-section">
+    <div class="service-card">
+        <img src="/images/checkup.png" alt="Annual Checkups Icon" />
+        <div class="service-title">Annual Checkups</div>
+        <div class="service-desc">
+            At Felix Medical Group, we strive for consistency and top-of-the-line care for each patient.
+            We provide annual checkups and routine visits to maintain positive health and wellbeing.
+        </div>
+    </div>
+
+    <div class="service-card">
+        <img src="/images/sports.png" alt="Sports Medicine Icon" />
+        <div class="service-title">Sports Medicine</div>
+        <div class="service-desc">
+            Dr. Felix is a family practitioner with extensive knowledge in Sports Medicine.
+            Dr. Felix provides sports physicals and injury assessments for athletes.
+        </div>
+    </div>
+
+    <div class="service-card">
+        <img src="/images/healthcare.png" alt="Preventative Healthcare Icon" />
+        <div class="service-title">Preventative Healthcare</div>
+        <div class="service-desc">
+            The Felix Medical Group promotes proactive, integrative, and functional medicine
+            to ensure patients are on top of their health and equipped with medical resources to succeed.
+        </div>
+    </div>
+</div>
+
+<section class="info-graphic">
+    <img src="~/images/family-beach.png" alt="Clinic Info Graphic">
+</section>
+
+<div class="highlight-message">
+    <p>
+        <span class="highlight">Take your health to the next level.</span>
+        We provide comprehensive medical care for the entire family.
+        Located in Riverside, CA, near Park View Hospital, our patients are at the heart of everything we do.
+    </p>
+</div>
+
+<section class="py-5" style="background: linear-gradient(180deg, #62b6c9, #57b0be);">
+    <div class="container text-center">
+        <p class="text-white fw-bold">REVIEWS FROM REAL PATIENTS</p>
+        <h2 class="fw-bold text-dark">Hear from our patients</h2>
+
+        <div class="row mt-4">
+            <div class="col-md-4 mb-4">
+                <div class="bg-white rounded shadow p-4 text-start">
+                    <div class="text-primary mb-2">
+                        ★ ★ ★ ★ ★
+                    </div>
+                    <p>We have been with Dr. Felix for more than 10 years! My kids are all in sports, and we are pleased that Dr. Felix is a family practice & specializes in sports medicine, too. Works great for our family!</p>
+                    <div class="d-flex align-items-center mt-3">
+                        <div class="rounded-circle bg-light text-center me-2" style="width: 40px; height: 40px;">
+                            <i class="bi bi-person-fill"></i>
+                        </div>
+                        <div>
+                            <strong>Robin R.</strong><br />
+                            <small>July 2018</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="bg-white rounded shadow p-4 text-start">
+                    <div class="text-primary mb-2">
+                        ★ ★ ★ ★ ★
+                    </div>
+                    <p>Dr. Felix is a terrific doctor. I feel like I lucked out so much finding him. Dr. Felix responds in a timely manner, and he is both very caring and knowledgeable in his practice.</p>
+                    <div class="d-flex align-items-center mt-3">
+                        <div class="rounded-circle bg-light text-center me-2" style="width: 40px; height: 40px;">
+                            <i class="bi bi-person-fill"></i>
+                        </div>
+                        <div>
+                            <strong>Heather D.</strong><br />
+                            <small>May 2020</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="bg-white rounded shadow p-4 text-start">
+                    <div class="text-primary mb-2">
+                        ★ ★ ★ ★ ★
+                    </div>
+                    <p>Dr Allen Felix is great, listens, and gives good advice to my needs his staff what can I say they are wonderful they always have positive attitude.</p>
+                    <div class="d-flex align-items-center mt-3">
+                        <div class="rounded-circle bg-light text-center me-2" style="width: 40px; height: 40px;">
+                            <i class="bi bi-person-fill"></i>
+                        </div>
+                        <div>
+                            <strong>Ramiro R.</strong><br />
+                            <small>Jan 2021</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="bg-white rounded shadow p-4 text-start">
+                    <div class="text-primary mb-2">
+                        ★ ★ ★ ★ ★
+                    </div>
+                    <p>Dr. Felix and his staff are wonderful... I once was talking to someone at gym who was going on about her fantastic Dr. I told her my Dr. was great as well. When she asked me the name and I told her Dr. Felix she started to laugh... her Dr. was Dr. Felix too.!</p>
+                    <div class="d-flex align-items-center mt-3">
+                        <div class="rounded-circle bg-light text-center me-2" style="width: 40px; height: 40px;">
+                            <i class="bi bi-person-fill"></i>
+                        </div>
+                        <div>
+                            <strong>Irene B.</strong><br />
+                            <small>May 2021</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="bg-white rounded shadow p-4 text-start">
+                    <div class="text-primary mb-2">
+                        ★ ★ ★ ★ ★
+                    </div>
+                    <p>He is an amazing doctor. I was worried when I was in search of a new doctor as I had had some bad experiences.. with a current injury I had in my knee. He took over my care and has been great ever since. The staff are kind and responsive. All around good experience thus far.</p>
+                    <div class="d-flex align-items-center mt-3">
+                        <div class="rounded-circle bg-light text-center me-2" style="width: 40px; height: 40px;">
+                            <i class="bi bi-person-fill"></i>
+                        </div>
+                        <div>
+                            <strong>Amber P.</strong><br />
+                            <small>Aug 2021</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="bg-white rounded shadow p-4 text-start">
+                    <div class="text-primary mb-2">
+                        ★ ★ ★ ★ ★
+                    </div>
+                    <p>Finally!!! I have found a doctor who I can trust and who makes me feel confident in his care! Pros: Treatment/Care, Personality, Promptness, and Education. HIGHLY RECOMMEND!!!</p>
+                    <div class="d-flex align-items-center mt-3">
+                        <div class="rounded-circle bg-light text-center me-2" style="width: 40px; height: 40px;">
+                            <i class="bi bi-person-fill"></i>
+                        </div>
+                        <div>
+                            <strong>Jay M.</strong><br />
+                            <small>Sept 2022</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="doctor-section">
+    <h2>Meet the Motivation of Felix Medical Group Team</h2>
+    <img src="/images/florencce.jpg" alt="Dr. Allen Felix" class="doctor-image" />
+    <div class="doctor-info">
+        <div class="doctor-name">Dr. Florence Nightingale</div>
+        <div class="doctor-description">
+            Florence Nightingale transformed nursing from an untrained job into a respected, science-based profession by introducing hygiene, training, and hospital reforms. Known as “The Lady with the Lamp,” she saved thousands during the Crimean War through better sanitation and compassionate care. A pioneer in using data to drive healthcare reforms, she established the first professional nursing school, setting global standards still followed today. Naming your system <b>Florence Medical Group</b> honors her legacy of compassionate, organized, and data-driven healthcare, reflecting professionalism and trust in modern medical care.
+
+        </div>
+    </div>
+</section>
+
+<section class="appointment-banner">
+    <div class="appointment-content">
+        <h3>Need to schedule an<br>appointment?</h3>
+    </div>
+    <a href="#" class="appointment-btn">Schedule an Appointment</a>
+</section>
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Felix Medical Group - Home Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .hero-section {
+            background: url('/images/bg.jpg') no-repeat center center;
+            background-size: cover;
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .top-nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-group img {
+            height: 35px;
+            margin-right: 10px;
+        }
+
+        .top-buttons a {
+            color: white;
+            font-weight: 500;
+            margin-left: 20px;
+            text-decoration: none;
+            border: 2px solid white;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .top-buttons a:hover {
+            background-color: white;
+            color: #000;
+        }
+
+        .bottom-right-img {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            max-width: 300px;
+            z-index: 1;
+        }
+
+        .services-section {
+            background-color: #fff;
+            padding: 80px 60px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .service-card {
+            background-color: #fff;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            padding: 50px 40px;
+            width: 100%;
+            max-width: 420px;
+            box-sizing: border-box;
+            text-align: left;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card img {
+            height: 48px;
+            margin-bottom: 20px;
+        }
+
+        .service-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #000;
+        }
+
+        .service-desc {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #777;
+        }
+
+        .info-graphic {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 40px 0;
+            background-color: #fafafa;
+        }
+
+        .info-graphic img {
+            width: 80%;
+            max-width: 1200px;
+            height: auto;
+            display: block;
+        }
+
+        .doctor-section {
+            background-color: #fff;
+            padding: 80px 60px;
+            text-align: center;
+        }
+
+        .doctor-section h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 40px;
+        }
+
+        .doctor-image {
+            max-width: 600px;
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            display: block;
+        }
+
+        .doctor-info {
+            margin-top: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .doctor-name {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #37929b;
+            margin-bottom: 10px;
+        }
+
+        .doctor-title {
+            font-size: 1.2rem;
+            color: #6c757d;
+            margin-bottom: 20px;
+        }
+
+        .doctor-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .highlight-message {
+            background-color: #fafafa;
+            text-align: center;
+            padding: 60px 30px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .highlight-message p {
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #6c757d;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .highlight-message .highlight {
+            font-weight: 700;
+            color: #37929b;
+        }
+
+        .appointment-banner {
+            background: linear-gradient(135deg, #7dd3f0, #62b6c9);
+            padding: 60px 40px;
+            margin: 60px auto;
+            max-width: 1200px;
+            border-radius: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .appointment-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .appointment-banner::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .appointment-content {
+            z-index: 2;
+            position: relative;
+        }
+
+        .appointment-content h3 {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .appointment-btn {
+            background: white;
+            color: #62b6c9;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            z-index: 2;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .appointment-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            color: #57b0be;
+        }
+
+        @media (max-width: 1024px) {
+            .services-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .doctor-section {
+                padding: 60px 30px;
+            }
+
+            .doctor-section h2 {
+                font-size: 2rem;
+            }
+
+            .appointment-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 20px;
+                margin: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <nav class="top-nav">
+            <div class="logo-group">
+                <img src="/images/logo.png" alt="Felix Medical Group Logo" />
+                <span class="fw-bold fs-4"></span>
+            </div>
+            <div class="top-buttons">
+                <a href="#contact">Contact</a>
+                <a href="#patient-portal">Patient Portal</a>
+            </div>
+        </nav>
+
+        <h1 class="display-3 fw-bold">Felix Medical Group</h1>
+        <p class="lead mt-3 mb-4">Dedicated to patient care and wellness for the entire family.</p>
+        <a href="#appointment" class="btn btn-light btn-lg">Schedule an Appointment</a>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="service-card">
+            <img src="/images/checkup.png" alt="Annual Checkups Icon" />
+            <div class="service-title">Annual Checkups</div>
+            <div class="service-desc">
+                At Felix Medical Group, we strive for consistency and top-of-the-line care for each patient.
+                We provide annual checkups and routine visits to maintain positive health and wellbeing.
+            </div>
+        </div>
+
+        <div class="service-card">
+            <img src="/images/sports.png" alt="Sports Medicine Icon" />
+            <div class="service-title">Sports Medicine</div>
+            <div class="service-desc">
+                Dr. Felix is a family practitioner with extensive knowledge in Sports Medicine.
+                Dr. Felix provides sports physicals and injury assessments for athletes.
+            </div>
+        </div>
+
+        <div class="service-card">
+            <img src="/images/healthcare.png" alt="Preventative Healthcare Icon" />
+            <div class="service-title">Preventative Healthcare</div>
+            <div class="service-desc">
+                The Felix Medical Group promotes proactive, integrative, and functional medicine
+                to ensure patients are on top of their health and equipped with medical resources to succeed.
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Graphic Section -->
+    <section class="info-graphic">
+        <img src="/images/family-beach.png" alt="Clinic Info Graphic">
+    </section>
+
+    <!-- Highlight Message Section -->
+    <section class="highlight-message">
+        <p>
+            <span class="highlight">Take your health to the next level.</span>
+            We provide comprehensive medical care for the entire family.
+            Located in Riverside, CA, near Park View Hospital, our patients are at the heart of everything we do.
+        </p>
+    </section>
+
+    <!-- Patient Reviews Section -->
+    <section class="py-5" style="background: linear-gradient(180deg, #62b6c9, #57b0be);">
+        <div class="container text-center">
+            <p class="text-white fw-bold">REVIEWS FROM REAL PATIENTS</p>
+            <h2 class="fw-bold text-dark">Hear from our patients</h2>
+
+            <div class="row mt-4">
+                <div class="col-md-4 mb-4">
+                    <div class="bg-white rounded shadow p-4 text-start">
+                        <div class="text-primary mb-2">
+                            ★ ★ ★ ★ ★
+                        </div>
+                        <p>We have been with Dr. Felix for more than 10 years! My kids are all in sports, and we are pleased that Dr. Felix is a family practice & specializes in sports medicine, too. Works great for our family!</p>
+                        <div class="d-flex align-items-center mt-3">
+                            <div class="rounded-circle bg-light text-center me-2" style="width: 40px; height: 40px; line-height: 40px;">
+                                <i class="bi bi-person-fill"></i>
+                            </div>
+                            <div>
+                                <strong>Robin R.</strong><br />
+                                <small>July 2018</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="bg-white rounded shadow p-4 text-start">
+                        <div class="text-primary mb-2">
+                            ★ ★ ★ ★ ★
+                        </div>
+                        <p>Dr. Felix is a terrific doctor. I feel like I lucked out so much finding him. Dr. Felix responds in a timely manner, and he is both very caring and knowledgeable in his practice.</p>
+                        <div class="d-flex align-items-center mt-3">
+                            <div class="rounded-circle bg-light text-center me-2" style="width: 40px; height: 40px; line-height: 40px;">
+                                <i class="bi bi-person-fill"></i>
+                            </div>
+                            <div>
+                                <strong>Heather D.</strong><br />
+                                <small>May 2020</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="bg-white rounded shadow p-4 text-start">
+                        <div class="text-primary mb-2">
+                            ★ ★ ★ ★ ★
+                        </div>
+                        <p>Dr Allen Felix is great, listens, and gives good advice to my needs his staff what can I say they are wonderful they always have positive attitude.</p>
+                        <div class="d-flex align-items-center mt-3">
+                            <div class="rounded-circle bg-light text-center me-2" style="width: 40px; height: 40px; line-height: 40px;">
+                                <i class="bi bi-person-fill"></i>
+                            </div>
+                            <div>
+                                <strong>Ramiro R.</strong><br />
+                                <small>Jan 2021</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="bg-white rounded shadow p-4 text-start">
+                        <div class="text-primary mb-2">
+                            ★ ★ ★ ★ ★
+                        </div>
+                        <p>Dr. Felix and his staff are wonderful... I once was talking to someone at gym who was going on about her fantastic Dr. I told her my Dr. was great as well. When she asked me the name and I told her Dr. Felix she started to laugh... her Dr. was Dr. Felix too.!</p>
+                        <div class="d-flex align-items-center mt-3">
+                            <div class="rounded-circle bg-light text-center me-2" style="width: 40px; height: 40px; line-height: 40px;">
+                                <i class="bi bi-person-fill"></i>
+                            </div>
+                            <div>
+                                <strong>Irene B.</strong><br />
+                                <small>May 2021</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="bg-white rounded shadow p-4 text-start">
+                        <div class="text-primary mb-2">
+                            ★ ★ ★ ★ ★
+                        </div>
+                        <p>He is an amazing doctor. I was worried when I was in search of a new doctor as I had had some bad experiences.. with a current injury I had in my knee. He took over my care and has been great ever since. The staff are kind and responsive. All around good experience thus far.</p>
+                        <div class="d-flex align-items-center mt-3">
+                            <div class="rounded-circle bg-light text-center me-2" style="width: 40px; height: 40px; line-height: 40px;">
+                                <i class="bi bi-person-fill"></i>
+                            </div>
+                            <div>
+                                <strong>Amber P.</strong><br />
+                                <small>Aug 2021</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="bg-white rounded shadow p-4 text-start">
+                        <div class="text-primary mb-2">
+                            ★ ★ ★ ★ ★
+                        </div>
+                        <p>Finally!!! I have found a doctor who I can trust and who makes me feel confident in his care! Pros: Treatment/Care, Personality, Promptness, and Education. HIGHLY RECOMMEND!!!</p>
+                        <div class="d-flex align-items-center mt-3">
+                            <div class="rounded-circle bg-light text-center me-2" style="width: 40px; height: 40px; line-height: 40px;">
+                                <i class="bi bi-person-fill"></i>
+                            </div>
+                            <div>
+                                <strong>Jay M.</strong><br />
+                                <small>Sept 2022</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctor Section -->
+    <section class="doctor-section">
+        <h2>Meet the Motivation of Felix Medical Group Team</h2>
+        <img src="/images/florencce.jpg" alt="Dr. Allen Felix" class="doctor-image" />
+        <div class="doctor-info">
+            <div class="doctor-name">Dr. Florence Nightingale</div>
+            <div class="doctor-description">
+                Florence Nightingale transformed nursing from an untrained job into a respected, science-based profession by introducing hygiene, training, and hospital reforms. Known as "The Lady with the Lamp," she saved thousands during the Crimean War through better sanitation and compassionate care. A pioneer in using data to drive healthcare reforms, she established the first professional nursing school, setting global standards still followed today. Naming your system <strong>Florence Medical Group</strong> honors her legacy of compassionate, organized, and data-driven healthcare, reflecting professionalism and trust in modern medical care.
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Banner -->
+    <section class="appointment-banner">
+        <div class="appointment-content">
+            <h3>Need to schedule an<br>appointment?</h3>
+        </div>
+        <a href="#appointment" class="appointment-btn">Schedule an Appointment</a>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
